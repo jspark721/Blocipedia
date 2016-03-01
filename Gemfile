@@ -21,7 +21,6 @@ gem 'bootstrap'
 gem 'figaro'
 gem 'pry'
 gem 'devise', '3.4.1'
-gem 'bootstrap-sass'
 
 group :development, :test do
   gem 'byebug'
