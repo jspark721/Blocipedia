@@ -1,9 +1,15 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
+  
   def index
     @users = User.all
   end
 
   def show
+    @user = User.find(params[:id])
+    unless @user == current_user
+      redirect_to :back, :alert => "Access denied."
+    end
   end
 
   def new
@@ -17,19 +23,20 @@ class UsersController < ApplicationController
     @user.password = params[:user][:password]
     @user.password_confirmation = params[:user][:password]
 
-    if @user.save
-      flash[:notice] = "Welcome to Bloccit #{@user.name}!"
-      redirect_to root_path
-    else
-      flash.now[:alert] = "There was an error creating your account. Please try again."
-      render :new
+    respond_to do |format|
+      if @user.save
+        UserMailer.welcome_email(@user).deliver_later
+
+          format.html { redirect_to(@user, notice: 'User was successfully created.') }
+          format.json { render json: @user, status: :created, location: @user }
+      else
+          format.html { render action: 'new' }
+          format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   def edit
-  end
-
-  def update
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
