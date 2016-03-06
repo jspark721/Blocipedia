@@ -10,12 +10,16 @@ class UsersController < ApplicationController
     @user.password = params[:user][:password]
     @user.password_confirmation = params[:user][:password_confirmation]
 
-    if @user.save
-      flash[:notice] = "Welcome to Blocipedia #{@user.name}!"
-      redirect_to root_path
-    else
-      flash.now[:alert] = "There was an error creating your account. Please try again."
-      render :new
+    respond_to do |format|
+      if @user.save
+        UserMailer.welcome_email(@user).deliver_later
+
+          format.html { redirect_to(@user, notice: 'User was successfully created.') }
+          format.json { render json: @user, status: :created, location: @user }
+      else
+          format.html { render action: 'new' }
+          format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
     end
   end
 end
