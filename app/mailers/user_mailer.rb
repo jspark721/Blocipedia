@@ -3,7 +3,7 @@ class UserMailer < ApplicationMailer
 
   def welcome_email(user)
     @user = user
-    @url = 'http://example.com/login'
+    @url = 'http://www.gmail.com'
     mail(to: @user.email, subject: 'Welcome to Blocipedia.')
   end
 end
