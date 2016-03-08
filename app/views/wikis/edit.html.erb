@@ -1,13 +1,8 @@
-<h1>Edit Post</h1>
+<h1>Edit Wiki</h1>
 
 <div class="row">
   <div class="col-md-4">
-    <p>Characteristics of Wiki</p>
-    <ul>
-      <li>Invites all users to edit any page or to create new pages within the wiki Website.</li>
-      <li>Promotes meaningful topic associations between different pages by making page link creation.</li>
-      <li>It involves the visitor in an ongoing process of creation and collaboration that constantly changes the Website landscape.</li>
-    </ul>
+
   </div>
   <div class="col-md-8">
     <%= form_for @wiki do |f| %>
@@ -20,11 +15,8 @@
         <%= f.text_area :body, rows: 8, class: 'form-control', placeholder: "Enter wiki body" %>
       </div>
       <div class="form-group">
-        <%= f.label :public, class: 'checkbox' do %>
-           <%= f.check_box :public %> Public wiki
-        <% end %>
+        <%= f.submit "Save", class: 'btn btn-success' %>
       </div>
-      <%= f.submit "Save", class: 'btn btn-success' %>
     <% end %>
   </div>
 </div>
