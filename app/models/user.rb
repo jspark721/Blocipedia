@@ -4,4 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  before_save { self.role ||= :member}
+
+  enum role: [:member, :admin, :premium]
 end
