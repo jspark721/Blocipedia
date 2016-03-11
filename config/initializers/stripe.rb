@@ -1,4 +1,3 @@
-config/initializers/stripe.rb
  # Store the environment variables on the Rails.configuration object
  Rails.configuration.stripe = {
    publishable_key: ENV['STRIPE_PUBLISHABLE_KEY'],
