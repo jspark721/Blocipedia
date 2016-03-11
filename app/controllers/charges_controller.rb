@@ -3,11 +3,13 @@ class ChargesController < ApplicationController
     @stripe_btn_data = {
       key: "#{ Rails.configuration.stripe[:publishable_key] }",
       description: "Premium Membership - #{current_user.name}",
-      amount: 39_99
+      amount: @amount
     }
   end
 
   def create
+    @amount = 15_00
+    
     customer = Stripe::Customer.create(
       email: current_user.email,
       card: params[:stripeToken]
@@ -15,7 +17,7 @@ class ChargesController < ApplicationController
 
     charge = Stripe::Charge.create(
       customer: customer.id,
-      amount: 39_99,
+      amount: @amount,
       description: "Premium Membership - #{current_user.email}",
       currency: 'usd'
     )
