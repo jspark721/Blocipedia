@@ -1,4 +1,7 @@
 class ChargesController < ApplicationController
+
+  before_filter :authenticate_user!
+  
   def new
     @stripe_btn_data = {
       key: "#{ Rails.configuration.stripe[:publishable_key] }",
@@ -9,7 +12,7 @@ class ChargesController < ApplicationController
 
   def create
     @amount = 15_00
-    
+
     customer = Stripe::Customer.create(
       email: current_user.email,
       card: params[:stripeToken]
