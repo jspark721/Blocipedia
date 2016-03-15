@@ -8,3 +8,24 @@
       </p>
     </div>
   </div>
+
+  <div class="row col-sm-12 plans">
+    <div class="col-sm-4 well">
+      <div class="plan"><h2>Standard</h2></div>
+      <ul class="list-unstyled">
+        <li>Create unlimited public wikis</li>
+        <li>Collaborate with other users</li>
+      </ul>
+      <h3>FREE</h3>
+      <%= link_to 'Sign up now!', new_user_registration_path(plan: 'standard'), :class => 'btn btn-primary' %>
+    </div>
+    <div class="col-sm-4 well featured">
+      <div class="plan featured-plan"><h2>Premium</h2></div>
+      <ul class="list-unstyled">
+        <li>Same benefit as standard</li>
+        <li>Create unlimited private wikis</li>
+      </ul>
+      <h3>$15</h3>
+      <%= link_to 'Upgrade now!', new_user_registration_path(plan: 'premium'), :class => 'btn btn-primary' %>
+    </div>
+  </div>
