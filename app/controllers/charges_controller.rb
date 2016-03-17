@@ -1,10 +1,10 @@
 class ChargesController < ApplicationController
 
   before_filter :authenticate_user!
-  
+
   def new
     @stripe_btn_data = {
-      key: "#{ Rails.configuration.stripe[:publishable_key] }",
+      key: "#{STRIPE_PUBLIC_KEY }",
       description: "Premium Membership - #{current_user.name}",
       amount: @amount
     }
