@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
 
   has_many :wikis
 
+  belongs_to :plan
+
   before_save { self.role ||= :member}
 
   enum role: [:member, :admin, :premium]
