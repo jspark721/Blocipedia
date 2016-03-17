@@ -2,30 +2,30 @@
     <div class="container">
       <h1>Blocipedia</h1>
       <p>Blocipedia allows users to create and collabrate on public and private Markdown-based wikis. Sign up today to get started!</p>
-      <p>
-        <%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-primary btn-lg' %> or
-        <%= link_to 'Sign In', new_user_session_path, class: 'btn btn-primary btn-lg' %>
-      </p>
     </div>
   </div>
 
-  <div class="row col-sm-12 plans">
-    <div class="col-sm-4 well">
-      <div class="plan"><h2>Standard</h2></div>
-      <ul class="list-unstyled">
-        <li>Create unlimited public wikis</li>
-        <li>Collaborate with other users</li>
-      </ul>
-      <h3>FREE</h3>
-      <%= link_to 'Sign up now!', new_user_registration_path(plan: 'standard'), :class => 'btn btn-primary' %>
+  <div class="row">
+    <div class="col-md-6 text-center">
+      <div class="well">
+        <div class="plan"><h2 class="text-center">Basic Membership</h2></div>
+          <ul class="list-unstyled text-center">
+            <li>Create unlimited public wikis</li>
+            <li>Collaborate with other users</li>
+          </ul>
+        <h3 class="text-center">FREE</h3>
+        <%= link_to "Sign up with Basic", new_user_registration_path(plan: @basic_plan.id), class: 'btn btn-info btn-lg' %>
+      </div>
     </div>
-    <div class="col-sm-4 well featured">
-      <div class="plan featured-plan"><h2>Premium</h2></div>
-      <ul class="list-unstyled">
-        <li>Same benefit as standard</li>
-        <li>Create unlimited private wikis</li>
-      </ul>
-      <h3>$15</h3>
-      <%= link_to 'Upgrade now!', new_user_registration_path(plan: 'premium'), :class => 'btn btn-primary' %>
+
+    <div class="col-md-6 text-center">
+      <div class="well">
+        <div class="plan premium"><h2 class="text-center">Premium Membership</h2></div>
+          <ul class="list-unstyled text-center">
+            <li>Same benefit as standard</li>
+            <li>Create unlimited private wikis</li>
+          </ul>
+        <h3>ONLY $15</h3>
+        <%= link_to "Sign up with Premium", new_user_registration_path(plan: @premium_plan.id), class: 'btn btn-warning btn-lg text-center' %>
+      </div>
     </div>
-  </div>
