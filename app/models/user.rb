@@ -12,4 +12,15 @@ class User < ActiveRecord::Base
 
   enum role: [:member, :admin, :premium]
 
+  attr_accessor :stripe_card_token
+
+  def save_with_payment
+    if valid?
+      # using stripe gem to send out information to stripe server
+      customer = Stripe::Customer.create(description: email, plan: plan_id, card: stripe_card_token)
+      self.stripe_customer_token = customer.id
+      save!
+    end
+  end
+
 end
