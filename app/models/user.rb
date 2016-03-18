@@ -19,8 +19,13 @@ class User < ActiveRecord::Base
       # using stripe gem to send out information to stripe server
       customer = Stripe::Customer.create(description: email, plan: plan_id, card: stripe_card_token)
       self.stripe_customer_token = customer.id
+      self.role = :premium
       save!
     end
+  rescue Stripe::InvalidRequestError => e
+    logger.error "Stripe error while creating customer: #{e.message}"
+    errors.add :base, "There was an error with your credit card."
+    false
   end
 
 end
