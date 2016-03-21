@@ -18,6 +18,7 @@
         <div id="user-info">
           <% if user_signed_in? %>
            Signed in as: <strong><%= current_user.name %></strong> |
+           <% if current_user.premium? %> <button type="button" class="btn btn-xs btn-info">Premium</button> <% end %>
            <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> - <%= link_to "Sign Out", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
          <% else %>
            <%= link_to "Sign Up", new_user_registration_path, :class => 'navbar-link'  %> -
