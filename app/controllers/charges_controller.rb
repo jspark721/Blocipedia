@@ -2,7 +2,7 @@ class ChargesController < ApplicationController
   def new
     @stripe_btn_data = {
       key: "#{ Rails.configuration.stripe[:publishable_key] }",
-      description: "BigMoney Membership - #{current_user.name}",
+      description: "Premium Account- #{current_user.name}",
       amount: @amount
     }
   end
@@ -22,8 +22,10 @@ class ChargesController < ApplicationController
       currency: 'usd'
     )
 
-    flash[:notice] = "Thank you for upgrading to Premium account, #{current_user.name}."
-    redirect_to user_path(current_user)
+    current_user.update_attribute(:role, 'premium')
+
+    flash[:notice] = "Your payment has been received. Thank you for upgrading to Premium account, #{current_user.name}."
+    redirect_to root_path
   end
 
 rescue Stripe::CardError => e
