@@ -1,13 +1,18 @@
 class ChargesController < ApplicationController
 
   before_filter :authenticate_user!
-  
+
   def new
-    @stripe_btn_data = {
-      key: "#{ Rails.configuration.stripe[:publishable_key] }",
-      description: "Premium Account- #{current_user.name}",
-      amount: @amount
-    }
+    if current_user.premium?
+      flash[:notice] = "You already upgraded to Premium!"
+      redirect_to root_path
+    else
+      @stripe_btn_data = {
+        key: "#{ Rails.configuration.stripe[:publishable_key] }",
+        description: "Premium Account- #{current_user.name}",
+        amount: @amount
+      }
+    end
   end
 
   def create
