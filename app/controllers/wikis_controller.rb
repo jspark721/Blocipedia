@@ -1,5 +1,7 @@
 class WikisController < ApplicationController
   before_action :authorize_user, only: [:destroy]
+  before_filter :authenticate_user!, except: [:index]
+  
   def index
     @wiki = Wiki.all
   end

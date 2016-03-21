@@ -11,7 +11,7 @@
     <ul class="nav nav-tabs">
       <li><%= link_to "Blocipedia", root_path %></li>
       <li><%= link_to "Wikis", wikis_path %></li>
-      <% if !(current_user.admin? || current_user.premium?) %>
+      <% if current_user == nil || !(current_user.admin? || current_user.premium?) %>
         <li><%= link_to "Upgrade", new_charge_path %></li>
       <% end %>
       <div class ="pull-right user-info">
