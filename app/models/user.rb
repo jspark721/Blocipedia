@@ -5,9 +5,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :wikis
-  
-  before_save { self.role ||= :member}
 
-  enum role: [:member, :admin, :premium]
+  before_save { self.role ||= :standard}
+
+  enum role: [:standard, :admin, :premium]
 
 end
