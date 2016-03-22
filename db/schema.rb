@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160309050627) do
+ActiveRecord::Schema.define(version: 20160322052236) do
 
   create_table "users", force: :cascade do |t|
     t.string   "name",                   default: "",    null: false
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20160309050627) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean  "public"
   end
 
   add_index "wikis", ["user_id"], name: "index_wikis_on_user_id"
