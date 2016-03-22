@@ -1,7 +1,7 @@
 class WikisController < ApplicationController
   before_action :authorize_user, only: [:destroy]
   before_filter :authenticate_user!, except: [:index]
-  
+
   def index
     @wiki = Wiki.all
   end
@@ -18,6 +18,7 @@ class WikisController < ApplicationController
     @wiki = Wiki.new
     @wiki.title = params[:wiki][:title]
     @wiki.body = params[:wiki][:body]
+    @wiki.private = params[:wiki][:private]
     @wiki.user = current_user
 
     if @wiki.save
@@ -37,6 +38,7 @@ class WikisController < ApplicationController
     @wiki = Wiki.find(params[:id])
     @wiki.title = params[:wiki][:title]
     @wiki.body = params[:wiki][:body]
+    @wiki.private = params[:wiki][:private]
 
     if @wiki.save
       flash[:notice] = "Wiki was updated."
