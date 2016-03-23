@@ -6,8 +6,24 @@ class User < ActiveRecord::Base
 
   has_many :wikis
 
-  before_save { self.role ||= :standard}
+  after_initialize :default_role
 
   enum role: [:standard, :admin, :premium]
+
+  def standard?
+    role == 'standard'
+  end
+
+  def admin?
+    role == 'admin'
+  end
+
+  def premium?
+    role == 'premium'
+  end
+
+  def default_role
+    self.role ||= :standard
+  end
 
 end

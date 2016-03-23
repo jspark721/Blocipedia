@@ -3,7 +3,7 @@ class WikisController < ApplicationController
   before_filter :authenticate_user!, except: [:index]
 
   def index
-    @wiki = Wiki.visible_to(current_user)
+    @wiki = policy_scope(Wiki)
   end
 
   def show
