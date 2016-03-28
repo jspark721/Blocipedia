@@ -7,7 +7,7 @@ class WikisController < ApplicationController
   end
 
   def show
-    @wiki = Wiki.visible_to(current_user).find(params[:id])
+    @wiki = Wiki.find(params[:id])
   end
 
   def new
