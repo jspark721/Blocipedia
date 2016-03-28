@@ -9,7 +9,7 @@
         <td><%= user.name %></td>
         <td>
           <% if @wiki.users.include? user %>
-            <%= link_to "Remove Collaborator", wiki_collaborations_path(@wiki, @wiki.collaboration_for(user)), method: :delete, class: 'btn btn-danger' %>
+            <%= link_to "Remove Collaborator", wiki_collaboration_path(@wiki, @wiki.collaboration_for(user)), method: :delete, class: 'btn btn-danger' %>
           <% else %>
             <%= link_to "Add Collaborator", wiki_collaborations_path(@wiki, user_id: user.id), method: :post, class: 'btn btn-success' %>
           <% end %>
