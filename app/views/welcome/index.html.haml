@@ -1,0 +1,33 @@
+.jumbotron
+  .container
+    %h1 Blocipedia
+    %p Blocipedia allows users to create and collaborate on public and private Markdown-based wikis.
+
+- if user_signed_in?
+  .container
+    .row
+      .col-md-4
+        %h2 Create
+        %p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+        %a.btn.btn-default{ :href => "#", :role => "button"} View details &raquo;
+      .col-md-4
+        %h2 Collaborate
+        %p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+        %a.btn.btn-default{ :href => "#", :role => "button"} View details &raquo;
+      .col-md-4
+        %h2 Share
+        %p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+        %a.btn.btn-default{ :href => "#", :role => "button"} View details &raquo;
+
+-else
+  .row
+    .col-md-6.text-center
+      .well
+        .plan
+          %h2.text-center Basic Account
+          %ul.list-unstyled.text-center
+            %li Create unlimited public wikis
+            %li Collaborate with other users
+            %li Option to upgrade for private wikis
+          %h3 FREE
+          = link_to "Sign up Today!", new_user_registration_path, class: 'btn btn-info btn-lg'
