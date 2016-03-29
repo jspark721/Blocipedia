@@ -1,0 +1,14 @@
+%h1 Edit Wiki
+= render "wikis/form"
+
+-if (@wiki.private == true) && (current_user.premium? || current_user.admin?)
+  %h3 Manage Collaborators
+  %table.table
+    - @users.each do |user|
+      %tr
+        %td= user.name
+        %td
+          -if @wiki.users.include? user
+            =link_to "Remove Collaborator", wiki_collaboration_path(@wiki, @wiki.collaboration_for(user)), method: :delete, class: 'btn btn-danger'
+          -else
+            = link_to "Add Collaborator", wiki_collaborations_path(@wiki, user_id: user.id), method: :post, class: 'btn btn-success'
