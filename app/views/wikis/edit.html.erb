@@ -1,7 +1,7 @@
 <h1>Edit Wiki</h1>
   <%= render "wikis/form" %>
 
-<% if current_user.premium? || current_user.admin? %>
+<% if (@wiki.private == true) && (current_user.premium? || current_user.admin?) %>
   <h3>Manage Collaborators</h3>
     <table class= 'table'>
       <% @users.each do |user| %>
