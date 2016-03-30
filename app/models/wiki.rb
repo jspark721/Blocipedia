@@ -6,4 +6,8 @@ class Wiki < ActiveRecord::Base
   def collaboration_for(user)
     collaborations.where(user: user).first
   end
+
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+
 end
