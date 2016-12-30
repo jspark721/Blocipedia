@@ -1,9 +1,9 @@
-## Blocipedia
-### a Rails application that allows users to create public and private Markdown-based wikis.
+## Dogwiki
+### a Rails application that allows users to create public and private Markdown-based wikis related to everything about Dogs.
 
 First Rails Web Development Project at [Bloc](http://bloc.io).
 
-###Gems 
+###Gems
 - Devise for User Authentication
 - Stripe for Payments
 - Redcarpet for Markdown
