@@ -1,7 +1,7 @@
 .jumbotron
   .container
-    %h1 Blocipedia
-    %p Blocipedia allows users to create and collaborate on public and private Markdown-based wikis.
+    %h1 Dogwiki
+    %p Dogwiki allows all dog lovers to create and collaborate on public and private Markdown-based wikis.
 
 - if user_signed_in?
   .container
@@ -27,11 +27,11 @@
           %h2.text-center Basic Account
           %ul.list-unstyled.text-center
             %li Create unlimited public wikis
-            %li Collaborate with other users
+            %li Collaborate with other dog lovers
             %li Option to upgrade for private wikis
           %h3 FREE
           = link_to "Sign up Today!", new_user_registration_path, class: 'btn btn-info btn-lg'
-          
+
     .col-md-6.text-center
       .well
         .plan
