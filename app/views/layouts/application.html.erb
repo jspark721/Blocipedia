@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Blocipedia</title>
+  <title>Dogwiki</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -9,7 +9,7 @@
 <body>
   <div class="container">
     <ul class="nav nav-tabs">
-      <li><%= link_to "Blocipedia", root_path %></li>
+      <li><%= link_to "Dogwiki", root_path %></li>
       <li><%= link_to "Wikis", wikis_path %></li>
       <% if current_user == nil || !(current_user.admin? || current_user.premium?) %>
         <li><%= link_to "Upgrade", new_charge_path %></li>
